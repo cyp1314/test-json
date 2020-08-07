@@ -1,0 +1,1236 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "登录系统",
+    "version": "last"
+  },
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "登录系统",
+      "description": ""
+    },
+    {
+      "name": "获取A系统菜单",
+      "description": null
+    },
+    {
+      "name": "第三方登陆",
+      "description": null
+    },
+    {
+      "name": "认证系统wx",
+      "description": null
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/refresh": {
+      "post": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "刷新令牌",
+        "description": "<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">{</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"msg\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"success\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"code\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(9, 134, 88)\">200</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">}</span>",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization (Only:undefined)",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    },
+    "/up/edit": {
+      "post": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "编辑用户信息",
+        "description": "修改之后要获取最新的用户信息，请调用刷新 token 的接口",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization (Only:bearer 830da68a-99c8-40f3-a930-36dc35ce7aa9\t)",
+            "required": true,
+            "type": "string",
+            "default": "bearer 830da68a-99c8-40f3-a930-36dc35ce7aa9\t"
+          },
+          {
+            "name": "avatar",
+            "in": "formData",
+            "required": true,
+            "description": "头像",
+            "type": "file"
+          },
+          {
+            "name": "username",
+            "in": "formData",
+            "required": true,
+            "description": "修改前确认是否唯一",
+            "type": "string"
+          },
+          {
+            "name": "moblie",
+            "in": "formData",
+            "required": true,
+            "description": "修改前确认是否唯一",
+            "type": "string"
+          },
+          {
+            "name": "sex",
+            "in": "formData",
+            "required": true,
+            "description": "1：男。2：女。3：未知",
+            "type": "string"
+          },
+          {
+            "name": "address",
+            "in": "formData",
+            "required": true,
+            "description": "地址",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    },
+    "/code/sms": {
+      "get": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "获取手机短信",
+        "description": "",
+        "parameters": [
+          {
+            "name": "mobile",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/up/login": {
+      "post": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "账号/手机号密码登陆",
+        "description": "",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "formData",
+            "required": true,
+            "description": "用户名或者手机号",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    },
+    "/userinfo/bind": {
+      "post": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "绑定身份",
+        "description": "",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization (Only:bearer 830da68a-99c8-40f3-a930-36dc35ce7aa9)",
+            "required": true,
+            "type": "string",
+            "default": "bearer 830da68a-99c8-40f3-a930-36dc35ce7aa9"
+          },
+          {
+            "name": "id_card",
+            "in": "formData",
+            "required": true,
+            "description": "身份证号码",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/register": {
+      "post": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "用户名密码注册",
+        "description": "",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/register/phone": {
+      "post": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "手机验证码注册",
+        "description": "",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "手机号码唯一性校验",
+        "description": "",
+        "parameters": [
+          {
+            "name": "phone",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/register/uname": {
+      "get": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "用户名唯一性验证",
+        "description": "",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/auth/user": {
+      "get": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "获取用户信息",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization (Only:bearer 830da68a-99c8-40f3-a930-36dc35ce7aa9)",
+            "required": true,
+            "type": "string",
+            "default": "bearer 830da68a-99c8-40f3-a930-36dc35ce7aa9"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "authorities": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "authority": {
+                        "type": "string"
+                      }
+                    },
+                    "required": [
+                      "authority"
+                    ]
+                  }
+                },
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "remoteAddress": {
+                      "type": "string"
+                    },
+                    "sessionId": {
+                      "type": "null"
+                    },
+                    "tokenValue": {
+                      "type": "string"
+                    },
+                    "tokenType": {
+                      "type": "string"
+                    },
+                    "decodedDetails": {
+                      "type": "null"
+                    }
+                  }
+                },
+                "authenticated": {
+                  "type": "boolean"
+                },
+                "userAuthentication": {
+                  "type": "object",
+                  "properties": {
+                    "authorities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "authority": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "authority"
+                        ]
+                      }
+                    },
+                    "details": {
+                      "type": "object",
+                      "properties": {
+                        "client_secret": {
+                          "type": "string"
+                        },
+                        "grant_type": {
+                          "type": "string"
+                        },
+                        "client_id": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "authenticated": {
+                      "type": "boolean"
+                    },
+                    "principal": {
+                      "type": "object",
+                      "properties": {
+                        "password": {
+                          "type": "null"
+                        },
+                        "username": {
+                          "type": "string"
+                        },
+                        "authorities": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "authority": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "authority"
+                            ]
+                          }
+                        },
+                        "accountNonExpired": {
+                          "type": "boolean"
+                        },
+                        "accountNonLocked": {
+                          "type": "boolean"
+                        },
+                        "credentialsNonExpired": {
+                          "type": "boolean"
+                        },
+                        "enabled": {
+                          "type": "boolean"
+                        },
+                        "userId": {
+                          "type": "number"
+                        },
+                        "agriUserId": {
+                          "type": "string"
+                        },
+                        "mobile": {
+                          "type": "string"
+                        },
+                        "lastLoginTime": {
+                          "type": "null"
+                        },
+                        "status": {
+                          "type": "null"
+                        },
+                        "avatar": {
+                          "type": "null"
+                        },
+                        "allInfo": {
+                          "type": "boolean"
+                        },
+                        "villageInfo": {
+                          "type": "object",
+                          "properties": {
+                            "vid": {
+                              "type": "number"
+                            },
+                            "vname": {
+                              "type": "string"
+                            },
+                            "vroleNames": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            },
+                            "vroleIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "number"
+                              }
+                            }
+                          }
+                        },
+                        "companyInfoList": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "cid": {
+                                "type": "string"
+                              },
+                              "cname": {
+                                "type": [
+                                  "string",
+                                  "null"
+                                ]
+                              },
+                              "vroleIds": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              },
+                              "vroleNames": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "required": [
+                              "cid",
+                              "cname",
+                              "vroleIds",
+                              "vroleNames"
+                            ]
+                          }
+                        },
+                        "servicerInfo": {
+                          "type": "null"
+                        }
+                      }
+                    },
+                    "credentials": {
+                      "type": "null"
+                    },
+                    "name": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "clientOnly": {
+                  "type": "boolean"
+                },
+                "oauth2Request": {
+                  "type": "object",
+                  "properties": {
+                    "clientId": {
+                      "type": "string"
+                    },
+                    "scope": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "requestParameters": {
+                      "type": "object",
+                      "properties": {
+                        "grant_type": {
+                          "type": "string"
+                        },
+                        "client_id": {
+                          "type": "string"
+                        },
+                        "username": {
+                          "type": "string"
+                        }
+                      }
+                    },
+                    "resourceIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "authorities": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "approved": {
+                      "type": "boolean"
+                    },
+                    "refresh": {
+                      "type": "boolean"
+                    },
+                    "redirectUri": {
+                      "type": "null"
+                    },
+                    "responseTypes": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "extensions": {
+                      "type": "object",
+                      "properties": {}
+                    },
+                    "grantType": {
+                      "type": "string"
+                    },
+                    "refreshTokenRequest": {
+                      "type": "null"
+                    }
+                  }
+                },
+                "principal": {
+                  "type": "object",
+                  "properties": {
+                    "password": {
+                      "type": "null"
+                    },
+                    "username": {
+                      "type": "string"
+                    },
+                    "authorities": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "authority": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "authority"
+                        ]
+                      }
+                    },
+                    "accountNonExpired": {
+                      "type": "boolean"
+                    },
+                    "accountNonLocked": {
+                      "type": "boolean"
+                    },
+                    "credentialsNonExpired": {
+                      "type": "boolean"
+                    },
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "userId": {
+                      "type": "number"
+                    },
+                    "agriUserId": {
+                      "type": "string"
+                    },
+                    "mobile": {
+                      "type": "string"
+                    },
+                    "lastLoginTime": {
+                      "type": "null"
+                    },
+                    "status": {
+                      "type": "null"
+                    },
+                    "avatar": {
+                      "type": "null"
+                    },
+                    "allInfo": {
+                      "type": "boolean"
+                    },
+                    "villageInfo": {
+                      "type": "object",
+                      "properties": {
+                        "vid": {
+                          "type": "number"
+                        },
+                        "vname": {
+                          "type": "string"
+                        },
+                        "vroleNames": {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        },
+                        "vroleIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "number"
+                          }
+                        }
+                      }
+                    },
+                    "companyInfoList": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "cid": {
+                            "type": "string"
+                          },
+                          "cname": {
+                            "type": [
+                              "string",
+                              "null"
+                            ]
+                          },
+                          "vroleIds": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "vroleNames": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "required": [
+                          "cid",
+                          "cname",
+                          "vroleIds",
+                          "vroleNames"
+                        ]
+                      }
+                    },
+                    "servicerInfo": {
+                      "type": "null"
+                    }
+                  }
+                },
+                "credentials": {
+                  "type": "string"
+                },
+                "name": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/up/logout": {
+      "get": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "注销",
+        "description": "<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">{</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"msg\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"success\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"code\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(9, 134, 88);\">200</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">}</span>",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization (Only:bearer 77cff21f-7a7a-43c2-9b44-27402d0218b6)",
+            "required": true,
+            "type": "string",
+            "default": "bearer 77cff21f-7a7a-43c2-9b44-27402d0218b6"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/oauth/check_token": {
+      "get": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "校验Token",
+        "description": "<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">{</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"msg\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"success\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"code\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(9, 134, 88);\">401</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"message\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"认证失败\"</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">}</span>\n\n<br>\n\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\\-\n\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">{</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"active\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">true</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"exp\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(9, 134, 88);\">1594971686</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"user_name\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"lisi\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"authorities\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: [</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"bill:del\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"notice:view\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"farmers:view\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"bill:edit\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"notice:detail\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"a:index\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"com:detail\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"com:view\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"org:view\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"bill:add\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"farmers:detail\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"bill:view\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"land:view\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"monitor:view\"</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    ],</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"client_id\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"hcr\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"scope\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: [</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"all\"</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    ]</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">}</span>",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "query",
+            "required": true,
+            "description": "bc2acc9-ca4b-4c2a-a2a5-c2ce23b5332c",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    },
+    "/authentication/mobile": {
+      "post": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "手机短信登陆",
+        "description": "mobile:110120130\nsmsCode:123456",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "mobile",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "smsCode",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth/overUserInfo": {
+      "get": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "校验用户是否初次登陆系统完善信息",
+        "description": "<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">{</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"msg\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"~~~~需要绑定\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"moblie\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"111\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n    <span class=\"colour\" style=\"color:rgb(0, 0, 0)\">\"name\":\"用户名\"，</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"code\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(9, 134, 88)\">500</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">}</span>",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization (Only:bearer 40da097d-69db-4584-aca3-1ccffae8d8d4)",
+            "required": true,
+            "type": "string",
+            "default": "bearer 40da097d-69db-4584-aca3-1ccffae8d8d4"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    },
+    "/auth/saveUserInfo": {
+      "post": {
+        "tags": [
+          "登录系统"
+        ],
+        "summary": "完善用户信息",
+        "description": "<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">{</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"msg\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"success\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"code\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(9, 134, 88)\">200</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">}</span>",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization (Only:undefined)",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "username",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "moblie",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "password",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/menus": {
+      "get": {
+        "tags": [
+          "获取A系统菜单"
+        ],
+        "summary": "菜单",
+        "description": "",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "description": "Authorization (Only:bearer 830da68a-99c8-40f3-a930-36dc35ce7aa9)",
+            "required": true,
+            "type": "string",
+            "default": "bearer 830da68a-99c8-40f3-a930-36dc35ce7aa9"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/wx/phone": {
+      "get": {
+        "tags": [
+          "第三方登陆"
+        ],
+        "summary": "小程序登录",
+        "description": "<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">{</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"msg\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"success\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"code\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(9, 134, 88)\">200</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"data\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: {</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">        </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"access_token\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"5d1d8883-1592-4653-b22f-50ab70b356c8\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">        </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"token_type\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"bearer\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">        </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"refresh_token\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"bfd280fe-3350-48c8-98a3-8dc55c31ffea\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">        </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"expires_in\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(9, 134, 88)\">86399</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">        </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"scope\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"all\"</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    }</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">}</span>",
+        "parameters": [
+          {
+            "name": "sessionKey",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "unionid",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "signature",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "rawData",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "encryptedData",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "iv",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "number"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "access_token": {
+                      "type": "string"
+                    },
+                    "token_type": {
+                      "type": "string"
+                    },
+                    "refresh_token": {
+                      "type": "string"
+                    },
+                    "expires_in": {
+                      "type": "number"
+                    },
+                    "scope": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wx/login": {
+      "get": {
+        "tags": [
+          "第三方登陆"
+        ],
+        "summary": "小程序获取unionid",
+        "description": "<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">{</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"msg\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"success\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"code\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(9, 134, 88);\">200</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"data\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: {</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"unionid\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">null</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">        </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"sessionKey\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"4NDU080WvyWNu7BbJo81OQ==\"</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    }</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">}</span>",
+        "parameters": [
+          {
+            "name": "code",
+            "in": "query",
+            "required": true,
+            "description": "003eeDYm0lpafn1qVNWm0R9Zbp0eeDYN",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$schema": "http://json-schema.org/draft-04/schema#",
+              "type": "object",
+              "properties": {
+                "msg": {
+                  "type": "string"
+                },
+                "code": {
+                  "type": "number"
+                },
+                "data": {
+                  "type": "object",
+                  "properties": {
+                    "unionid": {
+                      "type": "null"
+                    },
+                    "sessionKey": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/wx/info": {
+      "get": {
+        "tags": [
+          "第三方登陆"
+        ],
+        "summary": "获取用户信息",
+        "description": "返回用户信息",
+        "parameters": [
+          {
+            "name": "sessionKey",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "signature",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "rawData",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "encryptedData",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "iv",
+            "in": "query",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    },
+    "/social/login/wx/login": {
+      "get": {
+        "tags": [
+          "认证系统wx"
+        ],
+        "summary": "微信登陆",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {}
+          }
+        }
+      }
+    },
+    "/social/wxbind": {
+      "post": {
+        "tags": [
+          "认证系统wx"
+        ],
+        "summary": "绑定信息",
+        "description": "<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">{</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"msg\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"success\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"code\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(9, 134, 88)\">200</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"flag\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">false</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">,</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">    </span><span class=\"colour\" style=\"color:rgb(163, 21, 21)\">\"token\"</span><span class=\"colour\" style=\"color:rgb(0, 0, 0)\">: </span><span class=\"colour\" style=\"color:rgb(4, 81, 165)\">\"7926b966-d745-42b3-b729-1417bcccd9a6\"</span>\n<span class=\"colour\" style=\"color:rgb(0, 0, 0)\">}</span>\n\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"msg\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"success\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"code\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(9, 134, 88);\">200</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"flag\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">true</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">,//需要进行身份绑定</span>\n<span class=\"colour\" style=\"color: rgb(0, 0, 0);\">    </span><span class=\"colour\" style=\"color: rgb(163, 21, 21);\">\"token\"</span><span class=\"colour\" style=\"color: rgb(0, 0, 0);\">: </span><span class=\"colour\" style=\"color: rgb(4, 81, 165);\">\"c050441c-ac63-4ce7-a18e-e18ea5d778ef\"</span>",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "parameters": [
+          {
+            "name": "bindUsername",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "bindPassword",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "unionId",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "code",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          },
+          {
+            "name": "phone",
+            "in": "formData",
+            "required": true,
+            "description": "",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "object",
+              "title": "empty object",
+              "properties": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
